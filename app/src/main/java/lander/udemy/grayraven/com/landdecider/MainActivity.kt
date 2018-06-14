@@ -3,6 +3,7 @@ package lander.udemy.grayraven.com.landdecider
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -11,7 +12,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-
+    var cuurentIndex = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +34,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     fun displayPapis() {
         val res = resources
         @Suppress("DEPRECATION")
         val imageList = arrayListOf<Drawable>(res.getDrawable(R.drawable.tohigh),res.getDrawable(R.drawable.high),
                 res.getDrawable(R.drawable.onglidelslope), res.getDrawable(R.drawable.low), res.getDrawable(R.drawable.pullup))
         val random = Random()
-        papiView.setImageDrawable(imageList[random.nextInt(imageList.count())])
+        cuurentIndex = random.nextInt(imageList.count())
+        papiView.setImageDrawable(imageList[cuurentIndex])
+        println("showing image " + cuurentIndex)
         papiView.scaleType = ImageView.ScaleType.FIT_XY
     }
 
